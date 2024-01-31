@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loginandsignup/pages/register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,6 +13,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final emailfield = TextFormField(
@@ -49,12 +51,12 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     final loginButton = Material(
-      elevation: 5,
+      elevation: 8,
       borderRadius: BorderRadius.circular(30),
       color: Colors.green,
       child: MaterialButton(
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-        minWidth: MediaQuery.of(context).size.width,
+        minWidth: 270,
         onPressed: () {},
         child: Text(
           "Login",
@@ -67,14 +69,15 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
 
-    return Scaffold(
+    return SafeArea(
+        child: Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: Container(
             color: Colors.white,
             child: Padding(
-              padding: const EdgeInsets.all(36.0),
+              padding: const EdgeInsets.all(32.0),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -96,7 +99,30 @@ class _LoginPageState extends State<LoginPage> {
                     passwordfield,
                     SizedBox(height: 20),
                     loginButton,
-                    SizedBox(height: 40),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("Don't have an account?"),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisPage()));
+                          },
+                          child: Text(
+                            "Signup",
+                            style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15),
+                          ),
+                        )
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -104,6 +130,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-    );
+    ));
   }
 }
