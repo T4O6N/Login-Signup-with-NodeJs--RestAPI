@@ -8,6 +8,11 @@ class RegisPage extends StatefulWidget {
 }
 
 class _RegisPageState extends State<RegisPage> {
+
+  final _formKey = GlobalKey<FormState>();
+
+  final firstEditingController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
